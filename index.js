@@ -184,11 +184,27 @@ function sortedSquaredArrayOptimal(array) {
   let list = [];
   let start = 0;
   let end = array.length -1;
-  for (let index in array.reverse()) {
-    console.log('index: ', index);
+  let smallerVal = 0;
+  let largerVal = 0;
+  console.log('my array: ', array);
+  for (let index in array) {
+    // console.log('index: ', index);
+    smallerVal = array[start];
+    largerVal = array[end];
+    if (Math.abs(smallerVal) > Math.abs(largerVal)) {
+      console.log('absolute val: ', Math.abs(smallerVal));
+      console.log(`index - ${index}`);
+      list[index] = smallerVal * smallerVal;
+      start += 1;
+    } else {
+      list[index] = largerVal * largerVal;
+      end -= 1;
+    }
+
+    // console.log('array reversed: ', array.reverse())
   }
 
   return list;
 }
 
-console.log(sortedSquaredArrayOptimal([-5, -3, -2, -1, 9, 10, 12]));
+console.log(sortedSquaredArray([-85, -1, 9, 10, 12]));
